@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9962FD7-2432-4A58-82C3-E01771C02ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.CRM.Api", "src\FlintSoft.CRM.Api\FlintSoft.CRM.Api.csproj", "{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.CRM.Application", "src\FlintSoft.CRM.Application\FlintSoft.CRM.Application.csproj", "{8B2984CC-2CB9-4601-9450-A464F79F9BB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.CRM.Contracts", "src\FlintSoft.CRM.Contracts\FlintSoft.CRM.Contracts.csproj", "{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.CRM.Domain", "src\FlintSoft.CRM.Domain\FlintSoft.CRM.Domain.csproj", "{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlintSoft.CRM.Infrastructure", "src\FlintSoft.CRM.Infrastructure\FlintSoft.CRM.Infrastructure.csproj", "{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B2984CC-2CB9-4601-9450-A464F79F9BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B2984CC-2CB9-4601-9450-A464F79F9BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B2984CC-2CB9-4601-9450-A464F79F9BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B2984CC-2CB9-4601-9450-A464F79F9BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1DC41F8E-169F-4150-B00B-D16BCEA7DD7A} = {A9962FD7-2432-4A58-82C3-E01771C02ECB}
+		{8B2984CC-2CB9-4601-9450-A464F79F9BB1} = {A9962FD7-2432-4A58-82C3-E01771C02ECB}
+		{A5FFE1C9-9E8D-4AA4-A6B8-BA1FC283224E} = {A9962FD7-2432-4A58-82C3-E01771C02ECB}
+		{8C9F98CD-4581-4DD3-87C9-E36C0F8ED87E} = {A9962FD7-2432-4A58-82C3-E01771C02ECB}
+		{3D1C5EA8-C12B-48EB-9361-F1A5300CE1F8} = {A9962FD7-2432-4A58-82C3-E01771C02ECB}
+	EndGlobalSection
+EndGlobal
