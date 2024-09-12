@@ -1,3 +1,5 @@
+using System.Net;
+using FlintSoft.CRM.Application.Common.Errors;
 using FlintSoft.CRM.Application.Services;
 using FlintSoft.CRM.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +17,18 @@ public class AuthController(IAuthenticationService authenticationService) : Cont
                                                     request.LastName,
                                                     request.Email,
                                                     request.Password);
+        if (result.IsSuccess)
+        {
+            return Ok(MapResult(result.Value));
+        }
 
-        return result.Match(
-            r => Ok(MapResult(r)),
-            err => Problem(statusCode: (int)err.StatusCode, title: err.ErrorMessage)
-        );
+        var firstError = result.Errors[0];
+        if (firstError is DuplicateEmailError)
+        {
+            return Problem(statusCode: (int)HttpStatusCode.Conflict, detail: "User already exists");
+        }
+
+        return Problem();
     }
 
     [HttpPost("login")]

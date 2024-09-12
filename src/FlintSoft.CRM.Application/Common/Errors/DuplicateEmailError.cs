@@ -1,11 +1,16 @@
 using System;
 using System.Net;
+using FluentResults;
 
 namespace FlintSoft.CRM.Application.Common.Errors;
 
-public record struct DuplicateEmailError() : IError
+public class DuplicateEmailError() : IError
 {
     public HttpStatusCode StatusCode => HttpStatusCode.Conflict;
 
-    public string ErrorMessage => "User already exists";
+    public List<IError> Reasons => throw new NotImplementedException();
+
+    public string Message => "User already exists";
+
+    public Dictionary<string, object> Metadata => throw new NotImplementedException();
 }
