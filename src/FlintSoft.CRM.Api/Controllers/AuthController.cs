@@ -16,11 +16,10 @@ public class AuthController(IAuthenticationService authenticationService) : Cont
                                                     request.Email,
                                                     request.Password);
 
-        var response = new RegisterResponse(result.user.Id,
-                                            result.user.FirstName,
-                                            result.user.LastName);
-
-        return Ok(response);
+        return result.Match(
+            r => Ok(MapResult(r)),
+            err => Problem(statusCode: (int)err.StatusCode, title: err.ErrorMessage)
+        );
     }
 
     [HttpPost("login")]
@@ -35,5 +34,12 @@ public class AuthController(IAuthenticationService authenticationService) : Cont
                                             result.Token);
 
         return Ok(response);
+    }
+
+    private static RegisterResponse MapResult(RegistrationResult regResult)
+    {
+        return new RegisterResponse(regResult.user.Id,
+                                                        regResult.user.FirstName,
+                                                        regResult.user.LastName);
     }
 }
