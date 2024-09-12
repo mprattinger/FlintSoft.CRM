@@ -35,7 +35,7 @@ public class AuthenticationService(IJwtTokenGenerator jwtTokenGenerator,
         //Check if user already exists
         if (userRepository.GetUserByEmail(email) is not null)
         {
-            throw new DuplicateEmailException();
+            throw new Exception("User already exists");
         }
 
         //Create user (generate guid)

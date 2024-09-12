@@ -1,7 +1,5 @@
-using System.Security.Cryptography;
-using FlintSoft.CRM.Application.Common.Errors;
+using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlintSoft.CRM.Api.Controllers
@@ -14,12 +12,8 @@ namespace FlintSoft.CRM.Api.Controllers
         {
             Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-            var (statusCode, message) = exception switch {
-                IServiceException se => ((int)se.StatusCode, se.ErrorMessage),
-                _ => (StatusCodes.Status500InternalServerError, "An unexpected error occured")
-            };
-
-            return Problem(statusCode: statusCode, title: message);
+            
+            return Problem(statusCode: (int)HttpStatusCode.BadRequest, title: exception.Message);
         }
     }
 }
