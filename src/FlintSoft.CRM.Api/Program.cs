@@ -1,4 +1,6 @@
 using System.Reflection;
+using FlintSoft.CRM.Api.Filters;
+using FlintSoft.CRM.Api.Middleware;
 using FlintSoft.CRM.Application;
 using FlintSoft.CRM.Infrastructure;
 using FlintSoft.Endpoints;
@@ -6,7 +8,7 @@ using FlintSoft.Endpoints;
 var builder = WebApplication.CreateBuilder(args);
 
 // builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,6 +24,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//app.UseMiddleware<ErrorHandlingMiddleware>();
 
 // app.UseHttpsRedirection();
 
