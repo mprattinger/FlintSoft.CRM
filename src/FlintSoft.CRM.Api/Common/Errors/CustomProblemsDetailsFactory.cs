@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace FlintSoft.CRM.Api.Errors;
+namespace FlintSoft.CRM.Api.Common.Errors;
 
 public class CustomProblemsDetailsFactory : ProblemDetailsFactory
 {
-private readonly ApiBehaviorOptions _options;
+    private readonly ApiBehaviorOptions _options;
     private readonly Action<ProblemDetailsContext>? _configure;
 
     /// <summary>
@@ -25,7 +25,7 @@ private readonly ApiBehaviorOptions _options;
         _configure = problemDetailsOptions?.Value?.CustomizeProblemDetails;
     }
 
-    
+
     /// <inheritdoc />
     public override ProblemDetails CreateProblemDetails(
         HttpContext httpContext,

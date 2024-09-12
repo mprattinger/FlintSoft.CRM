@@ -1,7 +1,5 @@
-using FlintSoft.CRM.Api.Filters;
 using FlintSoft.CRM.Application.Services;
 using FlintSoft.CRM.Contracts.Authentication;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlintSoft.CRM.Api.Controllers;

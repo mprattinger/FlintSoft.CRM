@@ -1,16 +1,10 @@
-using System.Reflection;
-using FlintSoft.CRM.Api.Errors;
-using FlintSoft.CRM.Api.Filters;
-using FlintSoft.CRM.Api.Middleware;
+using FlintSoft.CRM.Api.Common.Errors;
 using FlintSoft.CRM.Application;
 using FlintSoft.CRM.Infrastructure;
-using FlintSoft.Endpoints;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
-// builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ProblemDetailsFactory, CustomProblemsDetailsFactory>();
 
@@ -31,11 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseExceptionHandler("/error");
 
-//app.UseMiddleware<ErrorHandlingMiddleware>();
-
-// app.UseHttpsRedirection();
-
-// app.MapEndpoints(app);
 app.MapControllers();
 
 app.Run();

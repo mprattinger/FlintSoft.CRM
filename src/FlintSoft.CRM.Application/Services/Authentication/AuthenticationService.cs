@@ -1,4 +1,5 @@
 using System;
+using FlintSoft.CRM.Application.Common.Errors;
 using FlintSoft.CRM.Application.Common.Interfaces.Authentication;
 using FlintSoft.CRM.Application.Common.Interfaces.Persistence;
 using FlintSoft.CRM.Domain.Entities;
@@ -34,7 +35,7 @@ public class AuthenticationService(IJwtTokenGenerator jwtTokenGenerator,
         //Check if user already exists
         if (userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given email already exists");
+            throw new DuplicateEmailException();
         }
 
         //Create user (generate guid)
