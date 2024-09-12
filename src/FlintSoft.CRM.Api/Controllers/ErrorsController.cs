@@ -15,7 +15,7 @@ namespace FlintSoft.CRM.Api.Controllers
             Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
             var (statusCode, message) = exception switch {
-                DuplicateEmailException => (StatusCodes.Status409Conflict, "Email already exists"),
+                IServiceException se => ((int)se.StatusCode, se.ErrorMessage),
                 _ => (StatusCodes.Status500InternalServerError, "An unexpected error occured")
             };
 
