@@ -1,5 +1,3 @@
-using System;
-using FlintSoft.CRM.Application.Common.Errors;
 using FlintSoft.CRM.Application.Common.Interfaces.Authentication;
 using FlintSoft.CRM.Application.Common.Interfaces.Persistence;
 using FlintSoft.CRM.Domain.Entities;
