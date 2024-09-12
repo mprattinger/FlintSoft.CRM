@@ -5,7 +5,8 @@ using FlintSoft.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+// builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,6 +25,7 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection();
 
-app.MapEndpoints(app);
+// app.MapEndpoints(app);
+app.MapControllers();
 
 app.Run();
