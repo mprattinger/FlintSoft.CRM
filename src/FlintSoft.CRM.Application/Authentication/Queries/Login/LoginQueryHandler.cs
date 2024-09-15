@@ -6,12 +6,14 @@ using FlintSoft.CRM.Domain.Common.Errors;
 using MediatR;
 using FlintSoft.CRM.Application.Common.Interfaces.Authentication;
 
-namespace FlintSoft.CRM.Application.Services.Authentication.Queries.Login;
+namespace FlintSoft.CRM.Application.Authentication.Queries.Login;
 
-public class LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator) : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
+public class LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator) : IRequestHandler<LoginQuery, ErrorOr<LoginResult>>
 {
-    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
+    public async Task<ErrorOr<LoginResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (userRepository.GetUserByEmail(query.Email) is not User user)
         {
             return Errors.Authentication.AuthenticationFailed;
@@ -24,7 +26,7 @@ public class LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerato
 
         var token = jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult(
+        return new LoginResult(
             user,
             token
         );

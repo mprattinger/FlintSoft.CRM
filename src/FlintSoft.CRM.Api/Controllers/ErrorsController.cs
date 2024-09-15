@@ -12,8 +12,8 @@ namespace FlintSoft.CRM.Api.Controllers
         {
             Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-            
-            return Problem(statusCode: (int)HttpStatusCode.BadRequest, title: exception.Message);
+
+            return Problem(statusCode: (int)HttpStatusCode.BadRequest, title: exception?.Message);
         }
     }
 }

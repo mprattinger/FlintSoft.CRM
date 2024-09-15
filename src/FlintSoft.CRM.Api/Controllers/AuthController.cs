@@ -1,27 +1,25 @@
-using FlintSoft.CRM.Application.Services.Authentication.Commands.Register;
-using FlintSoft.CRM.Application.Services.Authentication.Queries.Login;
+using FlintSoft.CRM.Application.Authentication.Commands.Register;
+using FlintSoft.CRM.Application.Authentication.Queries.Login;
 using FlintSoft.CRM.Contracts.Authentication;
 using FlintSoft.CRM.Domain.Common.Errors;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlintSoft.CRM.Api.Controllers;
 
 [Route("auth")]
-public class AuthController(ISender mediator) : ApiController
+public class AuthController(ISender mediator, IMapper mapper) : ApiController
 {
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var command = new RegisterCommand(request.FirstName,
-                                                    request.LastName,
-                                                    request.Email,
-                                                    request.Password);
+        var command = mapper.Map<RegisterCommand>(request);
 
         var result = await mediator.Send(command);
 
         return result.Match(
-            r => Ok(MapResult(r)),
+            r => Ok(mapper.Map<RegisterResponse>(r)),
             errors => Problem(errors)
         );
     }
@@ -29,7 +27,7 @@ public class AuthController(ISender mediator) : ApiController
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
-        var query = new LoginQuery(request.Email, request.Password);
+        var query = mapper.Map<LoginQuery>(request);
 
         var result = await mediator.Send(query);
 
@@ -39,23 +37,8 @@ public class AuthController(ISender mediator) : ApiController
         }
 
         return result.Match(
-            r => Ok(MapResult(r)),
+            r => Ok(mapper.Map<LoginResponse>(r)),
             errors => Problem(errors)
         );
-    }
-
-    private static RegisterResponse MapResult(RegistrationResult regResult)
-    {
-        return new RegisterResponse(regResult.user.Id,
-                                                        regResult.user.FirstName,
-                                                        regResult.user.LastName);
-    }
-
-    private static LoginResponse MapResult(AuthenticationResult result)
-    {
-        return new LoginResponse(result.user.Id,
-                                            result.user.FirstName,
-                                            result.user.LastName,
-                                            result.Token);
     }
 }

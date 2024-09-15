@@ -1,17 +1,14 @@
-using FlintSoft.CRM.Api.Common.Errors;
+using FlintSoft.CRM.Api;
 using FlintSoft.CRM.Application;
 using FlintSoft.CRM.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-builder.Services.AddSingleton<ProblemDetailsFactory, CustomProblemsDetailsFactory>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
+    .AddPresentation()
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 

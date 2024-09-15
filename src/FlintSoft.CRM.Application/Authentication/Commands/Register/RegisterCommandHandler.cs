@@ -4,12 +4,14 @@ using FlintSoft.CRM.Domain.Entities;
 using MediatR;
 using FlintSoft.CRM.Domain.Common.Errors;
 
-namespace FlintSoft.CRM.Application.Services.Authentication.Commands.Register;
+namespace FlintSoft.CRM.Application.Authentication.Commands.Register;
 
 public class RegisterCommandHandler(IUserRepository userRepository) : IRequestHandler<RegisterCommand, ErrorOr<RegistrationResult>>
 {
     public async Task<ErrorOr<RegistrationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+        
         //Check if user already exists
         if (userRepository.GetUserByEmail(command.Email) is not null)
         {
