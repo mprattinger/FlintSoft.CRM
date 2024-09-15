@@ -1,14 +1,12 @@
-using System;
-using FlintSoft.CRM.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FlintSoft.CRM.Application;
 
 public static class Extensions
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services) {
-        
-        services.AddScoped<IAuthenticationService, AuthenticationService>();
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+        services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining(typeof(Extensions)));
 
         return services;
     }
