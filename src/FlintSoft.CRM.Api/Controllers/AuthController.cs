@@ -4,11 +4,13 @@ using FlintSoft.CRM.Contracts.Authentication;
 using FlintSoft.CRM.Domain.Common.Errors;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlintSoft.CRM.Api.Controllers;
 
 [Route("auth")]
+[AllowAnonymous]
 public class AuthController(ISender mediator, IMapper mapper) : ApiController
 {
     [HttpPost("register")]
