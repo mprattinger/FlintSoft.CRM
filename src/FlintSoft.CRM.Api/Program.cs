@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddPresentation()
     .AddApplication()
-    .AddInfrastructure(builder.Configuration);
+    .AddInfrastructure(builder.Configuration)
+    .AddPresentation();
 
 var app = builder.Build();
 
